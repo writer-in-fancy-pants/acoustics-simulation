@@ -54,10 +54,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/octobass/tools/acoustic_simulator/geometry/acoustics_cpp
+CMAKE_SOURCE_DIR = /home/octobass/tools/acoustic_simulator/acoustics_cpp
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/octobass/tools/acoustic_simulator/geometry/acoustics_cpp/build
+CMAKE_BINARY_DIR = /home/octobass/tools/acoustic_simulator/acoustics_cpp/build
 
 #=============================================================================
 # Directory level rules for the build root directory

@@ -12,6 +12,7 @@
 #include <algorithm>
 #include <memory>
 #include <functional>
+#include <string>
 
 namespace acoustics {
 
@@ -223,7 +224,7 @@ struct Reflection {
 
 class RayTracer {
 public:
-    RayTracer(const std::vector<Triangle>& geometry, 
+    RayTracer(const std::vector<Triangle>* geometry, 
               float speedOfSound = 343.0f,
               int maxReflections = 10,
               float maxDistance = 100.0f)
@@ -250,7 +251,7 @@ public:
         }
         
         // First-order reflections
-        for (const auto& tri : geometry_) {
+        for (const auto& tri : *geometry_) {
             Vector3 refPoint = findReflectionPoint(source, mic, tri);
             float pathLen = (refPoint - source).length() + (mic - refPoint).length();
             
@@ -297,7 +298,7 @@ private:
         return result;
     }
     
-    const std::vector<Triangle>& geometry_;
+    const std::vector<Triangle>* geometry_;
     float speedOfSound_;
     int maxReflections_;
     float maxDistance_;
@@ -382,9 +383,9 @@ private:
 
 class AcousticSimulator {
 public:
-    AcousticSimulator(const std::vector<Triangle>& geometry,
+    AcousticSimulator(const std::vector<Triangle>* geometry,
                      int sampleRate = 44100)
-        : geometry_(geometry),
+        : geometry_(*geometry),
           sampleRate_(sampleRate),
           rayTracer_(geometry),
           irGen_(sampleRate) {}
@@ -416,7 +417,7 @@ public:
     }
     
     void setMaxReflections(int max) {
-        rayTracer_ = RayTracer(geometry_, 343.0f, max, 100.0f);
+        rayTracer_ = RayTracer(&geometry_, 343.0f, max, 100.0f);
     }
     
 private:
