@@ -1,0 +1,2 @@
+/home/octobass/tools/acoustic_simulator/geometry/acoustics_cpp/build/CMakeFiles/edit_cache.dir
+/home/octobass/tools/acoustic_simulator/geometry/acoustics_cpp/build/CMakeFiles/rebuild_cache.dir

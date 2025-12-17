@@ -8,7 +8,7 @@ from scipy import signal
 from typing import List, Callable, Optional, Tuple
 from dataclasses import dataclass
 
-from core import (
+from acoustics_core import (
     Vector3, Triangle, AudioSource, Microphone, 
     RayTracer, Reflection, MediumDatabase, MaterialDatabase
 )
