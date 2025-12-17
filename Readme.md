@@ -64,33 +64,11 @@ pip install -e .
 python -m pytest tests/
 ```
 
-### Project Structure
-```
-acoustics-simulator/
-├── acoustics_core.py          # Core module with materials & geometry
-├── acoustics_simulator.py     # Simulation engine
-├── acoustics_cpp/             # C++ implementation
-│   ├── acoustics.hpp
-│   ├── acoustics.cpp
-│   └── CMakeLists.txt
-├── vst_plugin/                # VST plugin files
-│   └── max_vst_plugin.jsx
-├── web_plugin/                # Web-based version
-│   └── index.html
-├── examples/                  # Usage examples
-│   └── usage_examples.py
-├── tests/                     # Unit tests
-├── materials.json             # Material database export
-├── setup.py                   # Installation script
-└── README.md
-```
-
 ---
 
 ## ⚙️ C++ Library Compilation
 
 ### Using CMake (Cross-platform)
-
 **1. Create CMakeLists.txt:**
 ```cmake
 cmake_minimum_required(VERSION 3.12)
@@ -155,8 +133,9 @@ cmake --build . --config Release
 # Install (optional)
 sudo cmake --install .
 ```
+--
 
-# Web audio & visualization plugin
+## Web audio & visualization plugin
 `cd vst_plugins`
 
 ```bash
