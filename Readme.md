@@ -133,7 +133,8 @@ cmake --build . --config Release
 # Install (optional)
 sudo cmake --install .
 ```
---
+
+---
 
 ## Web audio & visualization plugin
 `cd vst_plugins`
