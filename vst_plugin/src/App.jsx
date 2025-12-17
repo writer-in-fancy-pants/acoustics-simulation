@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from 'react';
 import Enhanced3DAcousticsVST from './components/Enhanced3DAcousticsVST';
 import { AudioEngine } from './utils/audioEngine';
 import { GeometryLoader } from './utils/geometryLoader';
@@ -15,10 +16,10 @@ import { OrbitControls, Grid, GizmoHelper } from '@react-three/drei';
  * Orchestrates all sub-components and manages global state
  */
 
-import React, { useState, useEffect } from 'react';
-import Enhanced3DAcousticsVST from './components/Enhanced3DAcousticsVST';
-import { AudioEngine } from './utils/audioEngine';
-import { GeometryLoader } from './utils/geometryLoader';
+
+// import Enhanced3DAcousticsVST from './components/Enhanced3DAcousticsVST';
+// import { AudioEngine } from './utils/audioEngine';
+// import { GeometryLoader } from './utils/geometryLoader';
 
 function App() {
   const [audioEngine] = useState(() => new AudioEngine());
