@@ -159,88 +159,22 @@ cmake --build . --config Release
 sudo cmake --install .
 ```
 
-### Platform-Specific Instructions
+# Web audio & visualization plugin
+`cd vst_plugins`
 
-#### Windows (Visual Studio)
-```cmd
-# Open Developer Command Prompt
-cd acoustics_cpp
-cl /EHsc /O2 /std:c++17 acoustics.cpp /link /DLL /OUT:acoustics.dll
-
-# Or use CMake with Visual Studio
-cmake -G "Visual Studio 16 2019" -A x64 ..
-cmake --build . --config Release
-```
-
-#### macOS
 ```bash
-# Using Clang
-cd acoustics_cpp
-clang++ -std=c++17 -O3 -shared -fPIC acoustics.cpp -o libacoustics.dylib
+# Install dependencies
+npm install
 
-# Or use CMake
-cmake .. -DCMAKE_BUILD_TYPE=Release
-make -j$(sysctl -n hw.ncpu)
+# Web development
+npm run dev
+
+# Electron desktop development
+npm run electron:dev
+
+# Build for production
+npm run electron:build        # All platforms
+npm run electron:build:win    # Windows only
+npm run electron:build:mac    # macOS only
+npm run electron:build:linux  # Linux only
 ```
-
-#### Linux
-```bash
-# Using GCC
-cd acoustics_cpp
-g++ -std=c++17 -O3 -shared -fPIC acoustics.cpp -o libacoustics.so
-
-# Or use CMake
-cmake .. -DCMAKE_BUILD_TYPE=Release
-make -j$(nproc)
-```
-
----
-
-## 🎛️ VST Plugin Deployment
-
-### Option 1: JUCE Framework (Native VST)
-
-**1. Install JUCE:**
-```bash
-# Download from https://juce.com/get-juce
-# Or use package manager
-brew install juce  # macOS
-```
-
-**2. Create JUCE Project:**
-```bash
-# Using Projucer
-# 1. Open Projucer
-# 2. Create new Audio Plug-in project
-# 3. Add acoustics library as module
-# 4. Configure VST3/AU formats
-# 5. Set plugin code: "Acst"
-# 6. Export to IDE (Xcode/VS/Makefile)
-```
-
-**3. Build:**
-```bash
-# Xcode (macOS)
-xcodebuild -project AcousticsVST.xcodeproj -configuration Release
-
-# Visual Studio (Windows)
-msbuild AcousticsVST.sln /p:Configuration=Release
-
-# Linux
-make CONFIG=Release
-```
-
-**4. Install VST:**
-```bash
-# Windows
-copy build\Release\AcousticsVST.vst3 "%CommonProgramFiles%\VST3\"
-
-# macOS
-cp -r build/Release/AcousticsVST.vst3 ~/Library/Audio/Plug-Ins/VST3/
-cp -r build/Release/AcousticsVST.component ~/Library/Audio/Plug-Ins/Components/
-
-# Linux
-cp build/Release/AcousticsVST.so ~/.vst3/
-```
-
-### Option 2: Web-Based Plu
