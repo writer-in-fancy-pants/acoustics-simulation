@@ -37,7 +37,9 @@ pip install soundfile librosa pydub
 ---
 
 ## 📦 Python Library Installation
-
+TODO : Create and test installation scripts
+The python installation currently isn't supported, stay tuned...
+Meanwhile, you can clone the package and use the code as is.
 ### Method 1: pip Install (Recommended)
 ```bash
 # Create virtual environment
@@ -45,7 +47,7 @@ python -m venv acoustics_env
 source acoustics_env/bin/activate  # On Windows: acoustics_env\Scripts\activate
 
 # Install library
-pip install acoustics-simulator
+pip install acoustics-simulation
 
 # Verify installation
 python -c "from acoustics_core import MaterialDatabase; print('✓ Installation successful')"
@@ -54,8 +56,8 @@ python -c "from acoustics_core import MaterialDatabase; print('✓ Installation 
 ### Method 2: From Source
 ```bash
 # Clone repository
-git clone https://github.com/your-repo/acoustics-simulator.git
-cd acoustics-simulator
+git clone https://github.com/writer-in-fancy-pants/acoustics-simulation.git
+cd acoustics-simulation
 
 # Install in development mode
 pip install -e .
@@ -69,57 +71,7 @@ python -m pytest tests/
 ## ⚙️ C++ Library Compilation
 
 ### Using CMake (Cross-platform)
-**1. Create CMakeLists.txt:**
-```cmake
-cmake_minimum_required(VERSION 3.12)
-project(AcousticsSimulator)
-
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
-# Optimization flags
-if(CMAKE_BUILD_TYPE STREQUAL "Release")
-    if(MSVC)
-        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /O2 /fp:fast")
-    else()
-        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -march=native -ffast-math")
-    endif()
-endif()
-
-# Find dependencies
-find_package(FFTW3 REQUIRED)  # For fast convolution
-
-# Library
-add_library(acoustics SHARED
-    acoustics_cpp/acoustics.cpp
-)
-
-target_include_directories(acoustics PUBLIC
-    ${CMAKE_CURRENT_SOURCE_DIR}/acoustics_cpp
-    ${FFTW3_INCLUDE_DIRS}
-)
-
-target_link_libraries(acoustics
-    ${FFTW3_LIBRARIES}
-)
-
-# Python bindings (optional)
-find_package(pybind11 CONFIG)
-if(pybind11_FOUND)
-    pybind11_add_module(acoustics_cpp_py
-        acoustics_cpp/python_bindings.cpp
-    )
-    target_link_libraries(acoustics_cpp_py PRIVATE acoustics)
-endif()
-
-# Install
-install(TARGETS acoustics
-    LIBRARY DESTINATION lib
-    RUNTIME DESTINATION bin
-)
-```
-
-**2. Build:**
+Install `fftw` before building 
 ```bash
 # Create build directory
 mkdir build && cd build
@@ -155,3 +107,5 @@ npm run electron:build:win    # Windows only
 npm run electron:build:mac    # macOS only
 npm run electron:build:linux  # Linux only
 ```
+
+---
