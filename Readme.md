@@ -4,10 +4,7 @@
 1. [Prerequisites](#prerequisites)
 2. [Python Library Installation](#python-library-installation)
 3. [C++ Library Compilation](#c-library-compilation)
-4. [VST Plugin Deployment](#vst-plugin-deployment)
-5. [Web-Based Plugin Deployment](#web-based-plugin-deployment)
-6. [Testing & Verification](#testing-verification)
-7. [Troubleshooting](#troubleshooting)
+4. [Web-Based Plugin Deployment](#web-based-plugin-deployment)
 
 ---
 
